@@ -49,7 +49,10 @@
 </html>
 <?php
     if (!empty($_POST)) {
-        if ($_POST['authorname'] == 'default') {
+        if (!preg_match('/[a-zA-Z]{1,}/', $_POST['userquote'])) {
+            die('<h2 style="text-align: center; color: red; margin-top: -5%;">Invalid: Please enter a quote</h2>');
+        }
+        else if ($_POST['authorname'] == 'default') {
             die('<h2 style="text-align:center; color: red; margin-top: -5%;">Invalid: Please choose an author</h2>');
         }
         else {
