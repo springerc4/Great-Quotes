@@ -17,7 +17,9 @@
     function addNewRecord($csv_file, $new_record) {
         $handle = fopen($csv_file, 'a');
         fwrite($handle, ''.PHP_EOL);
-        fputcsv($handle, $new_record, ';');
+        for ($i = 0; $i < count($new_record); $i++) {
+            fwrite($handle, implode(";", $new_record[$i]));
+        }
         fclose($handle);
     }
     //Modify a line from the CSV file

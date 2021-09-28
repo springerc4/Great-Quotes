@@ -12,7 +12,7 @@
 
   <body>
     <h1 style="text-align: center;">Create a Quote</h1>
-    <form method="POST" action="" id='createauthor' name='createauthor'>
+    <form method="POST" action="create.php" id='createauthor' name='createauthor'>
         <div class="container" style="background: lightcyan; padding: 5%; margin: 5%; border-radius: 10%;">
             <div class="row" style="margin-top: 10%; padding-bottom: 10%;">
                 <div class="col" style="margin-left: 20%; padding-left: 10%;">
@@ -47,3 +47,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
   </body>
 </html>
+<?php
+    if (!empty($_POST)) {
+        if ($_POST['authorname'] == 'default') {
+            die('<h2 style="text-align:center; color: red; margin-top: -5%;">Invalid: Please choose an author</h2>');
+        }
+        else {
+            for ($i = 0; $i < count($author_array); $i++) {
+                if (implode(" ", $author_array[$i]) == $_POST['authorname']) {
+                    $new_record[] = array($_POST['userquote'], strval($i));
+                    addNewRecord('quotes.txt', $new_record);
+                    echo '<h1 style="text-align: center; margin-top: -5%; color: green;">A New Quote has been Added!</h1>';
+                }
+            }
+        }
+    }
+?>
