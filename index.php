@@ -23,7 +23,7 @@
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title"><?= implode(" ", $authors_array[intval($quotes_array[$i][1])]) ?></h5>
-                <p class="card-text"><?= $quotes_array[$i][0] ?></p>
+                <p class="card-text"><?= '"'.$quotes_array[$i][0].'"' ?></p>
                 <a href="detail.php?index=<?= $i ?>" class="card-link" style="text-decoration: none; color: blue;">Details</a>
             </div>
         </div>

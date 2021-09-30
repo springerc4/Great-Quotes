@@ -9,9 +9,9 @@
         return $records;
     }
     //Returns a specified element from the CSV file in the form of a PHP array element
-    function returnCSVElement($csv_file, $element) {
+    function returnCSVElement($csv_file, $element, $index) {
         $new_array = convertCSV($csv_file);
-        return $new_array[$element];
+        return $new_array[$element][$index];
     }
     //Append a new record to the CSV file
     function addNewRecord($csv_file, $new_record) {

@@ -37,6 +37,7 @@
             </div>
             <div class="row">
                 <input form="createauthor" type="submit" value="Submit" style="background: lightcyan; width: 10%; margin-left: 45%;">
+                <a class="btn btn-secondary" href="index.php" role="button" style="width: 15%; margin-left: 42.5%; margin-top: 5%;">Back to Index</a>
             </div>
         </div>
     </form>
