@@ -28,7 +28,7 @@
             <p class="card-text">
                 <?= '"'.$enlarged_quote.'"' ?>
             </p>
-            <a href="delete.php" class="btn btn-primary">Delete Quote</a>
+            <a href="delete.php?index=<?=$_GET['index']?>" class="btn btn-primary">Delete Quote</a>
             <a href="modify.php" class="btn btn-primary">Modify Quote</a>
             <a href="index.php" class="btn btn-primary">Return to Quotes</a>
         </div>

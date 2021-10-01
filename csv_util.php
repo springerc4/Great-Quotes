@@ -23,7 +23,7 @@
         fclose($handle);
     }
     //Modify a line from the CSV file
-    function modifyRecord() {
+    function modifyRecord($file, $line) {
 
     }
     //Deletes the content of a line in a CSV files but keeps the line
