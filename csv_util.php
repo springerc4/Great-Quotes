@@ -23,7 +23,7 @@
         fclose($handle);
     }
     //Modify a line from the CSV file
-    function modifyRecord() {
+    function modifyRecord($file, $line, $index, $record) {
         $arr = convertCSV($file);
         $arr[$line][$index] = $record;
         $handle = fopen($file, 'w');
