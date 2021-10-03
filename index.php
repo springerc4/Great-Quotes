@@ -33,6 +33,7 @@
         }
     ?>
     <a class="btn btn-primary" href="create.php" role="button" style="margin: 5%;">Create a Quote</a>
+    <a class="btn btn-primary" href="authors-index.php" role="button">Authors</a>
 
 
     
