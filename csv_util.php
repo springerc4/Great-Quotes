@@ -23,15 +23,38 @@
         fclose($handle);
     }
     //Modify a line from the CSV file
-    function modifyRecord($file, $line) {
-
+    function modifyRecord($file, $line, $index, $record) {
+        $arr = convertCSV($file);
+        $arr[$line][$index] = $record;
+        $handle = fopen($file, 'w');
+        ftruncate($handle, 0);
+        foreach ($arr as $line){
+            fputcsv($handle, $line, ';');
+        }
+        fclose($handle);
+        
     }
     //Deletes the content of a line in a CSV files but keeps the line
-    function emptyRecord() {
-
+    function emptyRecord($file, $line) {
+        $arr = convertCSV($file);
+        $arr[$line][0] = "";
+        $arr[$line][0] = "";
+        print_r($arr[$line]);
+        $handle = fopen($file, 'w');
+        ftruncate($handle, 0);
+        foreach ($arr as $line){
+            fputcsv($handle, $line, ';');
+        }
+        fclose($handle);
     }
     // Deletes a line from the CSV file
-    function deleteRecord() {
-
+    function deleteRecord($file, $line) {
+        $arr = convertCSV($file);
+        array_splice($arr, $line, 1);
+        $handle = fopen($file, 'w');
+        foreach ($arr as $line){
+            fputcsv($handle, $line, ';');
+        }
+        fclose($handle);
     }
 ?>
