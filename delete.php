@@ -48,14 +48,14 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="margin: auto;">
-            <div class="col ml-5">   
+        <div class="row">
+            <div class="col" style="margin-left: 30%;">   
                 <form action="delete.php" method="POST" name="delete" id="delete">
                     <input type="hidden" value="delete" name="delete" id="delete">
                     <input class="btn btn-primary" form="delete" type="submit" value="delete">
                 </form>
             </div> 
-            <div class="col sm">
+            <div class="col">
                 <a href="index.php" class="btn btn-primary">Go Back</a>
             </div>
         </div>
