@@ -23,10 +23,9 @@
         fclose($handle);
     }
     //Modify a line from the CSV file
-    function modifyRecord($file, $index, $new_quote, $new_author_index) {
+    function modifyRecord($file, $line, $index, $new_quote,) {
         $array = convertCSV($file);
-        $array[$index][0] = $new_quote;
-        $array[$index][1] = $new_author_index;
+        $array[$line][$index] = $new_quote;
         $handle = fopen($file, 'w');
         foreach ($array as $records) {
             fputcsv($handle, $records, ';');
