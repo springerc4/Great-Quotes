@@ -1,9 +1,7 @@
-"The future belongs to those who prepare for it today";0
-"A great man is always willing to be little";1
+"The future belongs to those who prepare for ";0
+"A great man is always willing to be littl";1
 "Well done is better than well said";2
 "It is not in the stars to hold our destiny but in ourselves";3
 "That which does not kill us makes us stronger";4
 "Hello, I am Malcolm X";0
-"Save the day";4
-"I am Friedrich Nietschze";4
-
+hello;1

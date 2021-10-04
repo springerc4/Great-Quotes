@@ -1,7 +1,9 @@
 <?php
+   session_start();
    require_once('csv_util.php');
-   $quote = returnCSVElement('quotes.txt', $_GET['index'], 0);
-   $authorIndex = returnCSVElement('quotes.txt', $_GET['index'], 1);
+   $index = $_SESSION['index'];
+   $quote = returnCSVElement('quotes.txt', $index, 0);
+   $authorIndex = returnCSVElement('quotes.txt', $index, 1);
    $author = returnCSVElement('authors.txt', $authorIndex, 0)." ".returnCSVElement('authors.txt', $authorIndex, 1);
 ?>
 <!DOCTYPE html>
@@ -18,7 +20,10 @@
         <div class="container mt-5">
             <div class="text-center">
                 <h2>
-                    <?= $quote?>
+                    <?php if (!isset($_POST['delete'])){
+                        echo $quote;
+                    }
+                     ?>
                 </h2>
             </div>
         </div>
@@ -33,19 +38,25 @@
             <div class="alert alert-danger">  
                 <div class="text-center">
                     <h4>
-                        Are you sure you want to delete?
+                        <?php if (!isset($_POST['delete'])){
+                           echo "Are you sure you want to delete?";
+                        }else{
+                            echo "Deleted!";
+                        }
+                        ?>
                     </h4>
                 </div>
             </div>
         </div>
         <div class="row" style="margin: auto;">
-            <div class="col sm">   
-                <form action="delete.php" method="POST" name="delete">
-                    <input class = "btn btn-primary" form="delete" type="submit" value="Submit">
+            <div class="col ml-5">   
+                <form action="delete.php" method="POST" name="delete" id="delete">
+                    <input type="hidden" value="delete" name="delete" id="delete">
+                    <input class="btn btn-primary" form="delete" type="submit" value="delete">
                 </form>
             </div> 
             <div class="col sm">
-                <button type="button" href="index.php" class="btn btn-primary">Go Back</button>
+                <a href="index.php" class="btn btn-primary">Go Back</a>
             </div>
         </div>
     </div>
@@ -56,5 +67,7 @@
 </body>
 </html>
 <?php
-
+    if (isset($_POST['delete'])){
+        deleteRecord('quotes.txt', $index);
+    }
 ?>

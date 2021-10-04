@@ -1,9 +1,11 @@
 <?php
-    require_once('csv_util.php');
-    $enlarged_quote = returnCSVElement('quotes.txt', $_GET['index'], 0);
-    $author_list = convertCSV('authors.txt');
-    $author_index = returnCSVElement('quotes.txt', $_GET['index'], 1);
-    $quote_author = $author_list[$author_index][0].' '.$author_list[$author_index][1];
+  session_start();
+  require_once('csv_util.php');
+  $_SESSION['index'] = $_GET['index'];
+  $enlarged_quote = returnCSVElement('quotes.txt', $_GET['index'], 0);
+  $author_list = convertCSV('authors.txt');
+  $author_index = returnCSVElement('quotes.txt', $_GET['index'], 1);
+  $quote_author = $author_list[$author_index][0].' '.$author_list[$author_index][1];
 ?>
 
 
@@ -28,8 +30,8 @@
             <p class="card-text">
                 <?= '"'.$enlarged_quote.'"' ?>
             </p>
-            <a href="delete.php?index=<?= $_GET['index'] ?>" class="btn btn-primary">Delete Quote</a>
-            <a href="modify.php?index=<?= $_GET['index'] ?>" class="btn btn-primary">Modify Quote</a>
+            <a href="delete.php" class="btn btn-primary">Delete Quote</a>
+            <a href="modify.php" class="btn btn-primary">Modify Quote</a>
             <a href="index.php" class="btn btn-primary">Return to Quotes</a>
         </div>
     </div>

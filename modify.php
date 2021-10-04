@@ -1,6 +1,7 @@
 <?php
+   session_start();
    require_once('csv_util.php');
-   $index = $_GET['index'];
+   $index = $_SESSION['index'];
    $quote = returnCSVElement('quotes.txt', $index, 0);
    $authorIndex = returnCSVElement('quotes.txt', $index, 1);
    $author = returnCSVElement('authors.txt', $authorIndex, 0)." ".returnCSVElement('authors.txt', $authorIndex, 1);
@@ -18,18 +19,26 @@
     <h1 style="text-align: center; margin-top:10%;">Modify</h1>
         <div class="container mx-auto mt-5">
             <form method="POST" action="modify.php" id="modify" name="modifyQuote">
-                <div class="container m" style="background: orange;">
+                <div class="container m p-2 rounded" style="background: orange;">
                     <div class="row">
                         <div class="col" style="margin: auto;">
                             <h4>Quote</h4>
-                            <textarea name="quote" id="quote" cols="30" rows="3"><?=$quote?></textarea>
+                            <textarea name="quote" id="quote" cols="30" rows="3"></textarea>
                         </div>
                         <div class="col" style="margin: auto;">
                             <h4 style="text-align: center;">Author</h4>
                             <h5 style="background: white; margin:auto; text-align:center"><?=$author?></h5>    
                         </div>
                     </div>
-                    <input class="btn btn-primary" form="modify" type="submit" value="Submit">
+                    
+                    <div class="row">
+                        <div class="col sm">
+                            <input class="btn btn-primary" form="modify" type="submit" value="Submit">
+                        </div>
+                        <div class="col sm">
+                            <a href="index.php" class="btn btn-primary">Go Back</a>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -39,13 +48,12 @@
 </body>
 </html>
 <?php
-echo $_POST['quote'];
 if (!empty($_POST)) {
     if (!preg_match('/[a-zA-Z]{1,}/', $_POST['quote'])) {
         die('<h2 style="text-align: center; color: red; margin-top: -5%;">Invalid: Please enter a quote</h2>');
     }
     else{
-        modifyRecord('quotes.txt', $_GET['index'], 0, $_POST['quote']);
+        modifyRecord('quotes.txt', $index, 0, $_POST['quote']);
     }
 }   
 ?>
