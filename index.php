@@ -17,6 +17,9 @@
     <h1 style="text-align: center;">Quotes and Authors</h1>
     <?php
         for ($i = 0; $i < count($quotes_array); $i++) {
+          if ($quotes_array[$i] == null) {
+            break;
+          }
     ?>
 
     <div class="col-12 col-sm-6 col-lg-3">
