@@ -23,13 +23,13 @@
         fclose($handle);
     }
     //Modify a line from the CSV file
-    function modifyRecord($file, $line, $index, $record) {
-        $arr = convertCSV($file);
-        $arr[$line][$index] = $record;
+    function modifyRecord($file, $index, $new_quote, $new_author_index) {
+        $array = convertCSV($file);
+        $array[$index][0] = $new_quote;
+        $array[$index][1] = $new_author_index;
         $handle = fopen($file, 'w');
-        ftruncate($handle, 0);
-        foreach ($arr as $line){
-            fputcsv($handle, $line, ';');
+        foreach ($array as $records) {
+            fputcsv($handle, $records, ';');
         }
         fclose($handle);
     }
@@ -47,7 +47,7 @@
         fclose($handle);
     }
     // Deletes a line from the CSV file
-    function deleteRecord() {
+    function deleteRecord($file, $line) {
         $arr = convertCSV($file);
         array_splice($arr, $line, 1);
         $handle = fopen($file, 'w');

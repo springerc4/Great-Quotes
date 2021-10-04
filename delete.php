@@ -3,6 +3,13 @@
    $quote = returnCSVElement('quotes.txt', $_GET['index'], 0);
    $authorIndex = returnCSVElement('quotes.txt', $_GET['index'], 1);
    $author = returnCSVElement('authors.txt', $authorIndex, 0)." ".returnCSVElement('authors.txt', $authorIndex, 1);
+   if (isset($_POST['delete'])) {
+    deleteRecord();
+    echo 'Quote has been deleted!';
+   }
+   else {
+    echo 'Failed';
+   }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,11 +48,11 @@
         <div class="row" style="margin: auto;">
             <div class="col sm">   
                 <form action="delete.php" method="POST" name="delete">
-                    <input class = "btn btn-primary" form="delete" type="submit" value="Submit">
+                    <input class = "btn btn-primary" form="delete" name="deleteSubmit" type="submit" value="Submit">
                 </form>
             </div> 
             <div class="col sm">
-                <button type="button" href="index.php" class="btn btn-primary">Go Back</button>
+                <a class="btn btn-primary" href="index.php" role="button">Back to Index</a>
             </div>
         </div>
     </div>
@@ -56,5 +63,5 @@
 </body>
 </html>
 <?php
-
+    
 ?>

@@ -3,7 +3,7 @@
 "Well done is better than well said";2
 "It is not in the stars to hold our destiny but in ourselves";3
 "That which does not kill us makes us stronger";4
-"Hello, I am Malcolm X";0
-"Save the day";4
-"I am Friedrich Nietschze";4
-
+Woah;1
+"I am a man";1
+"I am Benjamin";2
+"I am William";3
