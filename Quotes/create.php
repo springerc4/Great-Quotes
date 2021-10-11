@@ -1,5 +1,6 @@
 <?php
-    require_once('csv_util.php');
+    session_start();
+    require_once('..\csv_util.php');
 ?>
 <!doctype html>
 <html lang="en">
@@ -9,7 +10,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>Create a Quote</title>
   </head>
-
+<?php
+    if ($_SESSION['logged'] == "false") {
+?>
+    <body>
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">I'm Sorry</h4>
+            <p>In order to create a quote, you have to be signed in to an account.</p>
+            <hr>
+            <p class="mb-0">
+                <a href="..\signup.php"><button type="button" class="btn btn-primary">Sign Up</button></a>
+                <a href="..\signin.php"><button type="button" class="btn btn-primary">Sign In</button></a>
+                <a href="index.php"><button type="button" class="btn btn-primary">Home</button></a>
+            </p>
+        </div>
+    </body>
+<?php
+    }
+    else {
+?>
   <body>
     <h1 style="text-align: center;">Create a Quote</h1>
     <form method="POST" action="create.php" id='createauthor' name='createauthor'>
@@ -49,19 +68,20 @@
   </body>
 </html>
 <?php
-    if (!empty($_POST)) {
-        if (!preg_match('/[a-zA-Z]{1,}/', $_POST['userquote'])) {
-            die('<h2 style="text-align: center; color: red; margin-top: -5%;">Invalid: Please enter a quote</h2>');
-        }
-        else if ($_POST['authorname'] == 'default') {
-            die('<h2 style="text-align:center; color: red; margin-top: -5%;">Invalid: Please choose an author</h2>');
-        }
-        else {
-            for ($i = 0; $i < count($author_array); $i++) {
-                if (implode(" ", $author_array[$i]) == $_POST['authorname']) {
-                    $new_record[] = array($_POST['userquote'], strval($i));
-                    addNewRecord('quotes.txt', $new_record);
-                    echo '<h1 style="text-align: center; margin-top: -5%; color: green;">A New Quote has been Added!</h1>';
+        if (!empty($_POST)) {
+            if (!preg_match('/[a-zA-Z]{1,}/', $_POST['userquote'])) {
+                die('<h2 style="text-align: center; color: red; margin-top: -5%;">Invalid: Please enter a quote</h2>');
+            }
+            else if ($_POST['authorname'] == 'default') {
+                die('<h2 style="text-align:center; color: red; margin-top: -5%;">Invalid: Please choose an author</h2>');
+            }
+            else {
+                for ($i = 0; $i < count($author_array); $i++) {
+                    if (implode(" ", $author_array[$i]) == $_POST['authorname']) {
+                        $new_record[] = array($_POST['userquote'], strval($i));
+                        addNewRecord('quotes.txt', $new_record);
+                        echo '<h1 style="text-align: center; margin-top: -5%; color: green;">A New Quote has been Added!</h1>';
+                    }
                 }
             }
         }

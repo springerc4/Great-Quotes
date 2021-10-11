@@ -77,4 +77,13 @@
         fclose($handle);
         return $contains;
     }
+    function passwordMatch($csv_file, $password) {
+        $array = convertCSV($csv_file);
+        for ($i = 0; $i < count($array); $i++) {
+            if (password_verify($password, $array[$i][1])) {
+                return true;
+            }
+        }
+        return false;
+    }
 ?>

@@ -4,7 +4,7 @@
 	require_once('csv_util.php');
 	// if the user is alreay signed in, redirect them to the members_page.php page
 	if ($_SESSION['logged'] == "true") {
-		header('Location: index.php');
+		header('Location: Quotes\index.php');
 	}
 	// use the following guidelines to create the function in auth.php
 	//instead of using "die", return a message that can be printed in the HTML page
@@ -14,7 +14,7 @@
 		// 9. store session information
 		if (signin($email_input, $password_input)) {
 			$_SESSION['logged'] = "true";
-			header('Location: index.php');
+			header('Location: Quotes\index.php');
 		}
 		else $_SESSION['logged'] = "false";
 		

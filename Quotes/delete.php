@@ -24,8 +24,8 @@
             <p>In order to delete a quote, you have to be signed in to an account.</p>
             <hr>
             <p class="mb-0">
-                <a href="signup.php"><button type="button" class="btn btn-primary">Sign Up</button></a>
-                <a href="signin.php"><button type="button" class="btn btn-primary">Sign In</button></a>
+                <a href="..\signup.php"><button type="button" class="btn btn-primary">Sign Up</button></a>
+                <a href="..\signin.php"><button type="button" class="btn btn-primary">Sign In</button></a>
                 <a href="index.php"><button type="button" class="btn btn-primary">Home</button></a>
             </p>
         </div>
