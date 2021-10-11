@@ -1,7 +1,7 @@
 <?php
-    require_once('csv_util.php');
+    require_once('..\csv_util.php');
     $author_array = convertCSV('authors.txt');
-    $quote_array = convertCSV('quotes.txt');
+    $quote_array = convertCSV('..\Quotes\quotes.txt');
     $index = $_GET['index'];
     echo '<h1>Quotes by '.$author_array[$index][0].' '.$author_array[$index][1].'</h1><br>';
     for ($i = 0; $i < count($quote_array); $i++) {

@@ -1,10 +1,10 @@
 <?php
    session_start();
-   require_once('csv_util.php');
+   require_once('..\csv_util.php');
    $index = $_SESSION['index'];
    $quote = returnCSVElement('quotes.txt', $index, 0);
    $authorIndex = returnCSVElement('quotes.txt', $index, 1);
-   $author = returnCSVElement('authors.txt', $authorIndex, 0)." ".returnCSVElement('authors.txt', $authorIndex, 1);
+   $author = returnCSVElement('..\Authors\authors.txt', $authorIndex, 0)." ".returnCSVElement('..\Authors\authors.txt', $authorIndex, 1);
 ?>
 
 <!doctype html>

@@ -1,9 +1,9 @@
 <?php
   session_start();
-  require_once('csv_util.php');
+  require_once('..\csv_util.php');
   $_SESSION['index'] = $_GET['index'];
   $enlarged_quote = returnCSVElement('quotes.txt', $_GET['index'], 0);
-  $author_list = convertCSV('authors.txt');
+  $author_list = convertCSV('..\Authors\authors.txt');
   $author_index = returnCSVElement('quotes.txt', $_GET['index'], 1);
   $quote_author = $author_list[$author_index][0].' '.$author_list[$author_index][1];
 ?>
