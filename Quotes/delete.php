@@ -15,6 +15,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>Delete</title>
 </head>
+<?php
+    if ($_SESSION['logged'] == "false") {
+?>
+    <body>
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">I'm Sorry</h4>
+            <p>In order to delete a quote, you have to be signed in to an account.</p>
+            <hr>
+            <p class="mb-0">
+                <a href="signup.php"><button type="button" class="btn btn-primary">Sign Up</button></a>
+                <a href="signin.php"><button type="button" class="btn btn-primary">Sign In</button></a>
+                <a href="index.php"><button type="button" class="btn btn-primary">Home</button></a>
+            </p>
+        </div>
+    </body>
+
+<?php
+    }
+    else {
+?>
 <body>
     <div class="column">
         <div class="container mt-5">
@@ -67,7 +87,8 @@
 </body>
 </html>
 <?php
-    if (isset($_POST['delete'])){
-        deleteRecord('quotes.txt', $index);
+        if (isset($_POST['delete'])){
+            deleteRecord('quotes.txt', $index);
+        }
     }
 ?>

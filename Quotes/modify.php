@@ -15,6 +15,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>Modify</title>
 </head>
+<?php
+    if ($_SESSION['logged'] == "false") {
+?>
+    <body>
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">I'm Sorry</h4>
+            <p>In order to modify a user, you have to be signed in to an account.</p>
+            <hr>
+            <p class="mb-0">
+                <a href="..\signup.php"><button type="button" class="btn btn-primary">Sign Up</button></a>
+                <a href="..\signin.php"><button type="button" class="btn btn-primary">Sign In</button></a>
+                <a href="index.php"><button type="button" class="btn btn-primary">Home</button></a>
+            </p>
+        </div>
+    </body>
+<?php
+    }
+    else {
+?>
 <body>
     <h1 style="text-align: center; margin-top:10%;">Modify</h1>
         <div class="container mx-auto mt-5">
@@ -49,13 +68,15 @@
 </html>
 
 <?php
-if (!empty($_POST)) {
-    if (!preg_match('/[a-zA-Z]{1,}/', $_POST['quote'])) {
-        die('<h2 style="text-align: center; color: red; margin-top: -5%;">Invalid: Please enter a quote</h2>');
+        if (!empty($_POST)) {
+            if (!preg_match('/[a-zA-Z]{1,}/', $_POST['quote'])) {
+                die('<h2 style="text-align: center; color: red; margin-top: -5%;">Invalid: Please enter a quote</h2>');
+            }
+            else{
+                modifyRecord('quotes.txt', $index, 0, $_POST['quote']);
+                echo '<h1 style="text-align: center; margin-top: -5%; color: green;">This quote has been modified!</h1>';
+            }
+        }
     }
-    else{
-        modifyRecord('quotes.txt', $index, 0, $_POST['quote']);
-        echo '<h1 style="text-align: center; margin-top: -5%; color: green;">This quote has been modified!</h1>';
-    }
-}
+
 ?>

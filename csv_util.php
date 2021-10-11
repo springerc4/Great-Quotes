@@ -60,4 +60,21 @@
         ftruncate($handle, ($size-1));
         fclose($handle);
     }
+    // Check if user email is banned or active
+    function contains($csv_file, $user_input) {
+        $contains = false;
+        $handle = fopen($csv_file, "r");
+        while (!feof($handle)) {
+            $record = fgetcsv($handle, 1024, ';');
+            if ($record == '') {
+                continue;
+            }
+            if ($record[0] == $user_input) {
+                $contains = true;
+                break;
+            }
+        }
+        fclose($handle);
+        return $contains;
+    }
 ?>

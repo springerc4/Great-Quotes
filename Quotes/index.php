@@ -1,5 +1,10 @@
 <?php
+    session_start();
     require_once('..\csv_util.php');
+    require_once('..\auth.php');
+    if (!isset($_SESSION['logged'])) {
+      $_SESSION['logged'] = "false";
+  }
     $authors_array = convertCSV('..\Authors\authors.txt');
     $quotes_array = convertCSV('quotes.txt');
 ?>
