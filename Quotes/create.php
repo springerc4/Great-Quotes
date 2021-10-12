@@ -43,9 +43,11 @@
                     <select name="authorname" id="author" form="createauthor" style="height: 60%;">
                         <option value="default">Choose an author</option>
                         <?php
-                            $author_array = convertCSV('authors.txt');
+                            $author_array = convertCSV('..\Authors\authors.txt');
+                            print_r($author_array);
                             for ($i = 0; $i < count($author_array); $i++) {
                                 $author_name = $author_array[$i][0].' '.$author_array[$i][1];
+                                echo $author_name;
                         ?>
                         <option name="<?= $author_name ?>" value="<?= $author_name ?>"><?= $author_name ?></option>
                         <?php
