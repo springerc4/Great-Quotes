@@ -1,5 +1,5 @@
-Malcolm;X
-Ralph;Waldo Emerson
-Benjamin;Franklin
-William;Shakespeare
-Friedrich;Nietzsche
+Malcolm;X;"..\photos/malcolmx.jpg"
+Ralph;"Waldo Emerson";"..\photos/waldo_emerson.jpg"
+Benjamin;Franklin;"..\photos/ben_frank.jpg"
+William;Shakespeare;"..\photos/shakespeare.jpg"
+Friedrich;Nietzsche;"..\photos/nietzsche.jpg"

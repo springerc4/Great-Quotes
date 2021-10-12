@@ -8,6 +8,18 @@
         fclose($handle);
         return $records;
     }
+    //Converts PHP array to CSV file
+    function convertPHP($array, $csv_file) {
+        $handle = fopen($csv_file, 'w');
+        for ($i = 0; $i < count($array); $i++) {
+            $line = $array[$i];
+            if ($line == null) {
+                break;
+            }
+            fputcsv($handle, $line, ';');
+        }
+        fclose($handle);
+    }
     //Returns a specified element from the CSV file in the form of a PHP array element
     function returnCSVElement($csv_file, $element, $index) {
         $new_array = convertCSV($csv_file);
@@ -60,7 +72,7 @@
         ftruncate($handle, ($size-1));
         fclose($handle);
     }
-    // Check if user email is banned or active
+    // Check if user email is active
     function contains($csv_file, $user_input) {
         $contains = false;
         $handle = fopen($csv_file, "r");

@@ -4,7 +4,7 @@
     require_once('..\auth.php');
     if (!isset($_SESSION['logged'])) {
       $_SESSION['logged'] = "false";
-  }
+    }
     $authors_array = convertCSV('..\Authors\authors.txt');
     $quotes_array = convertCSV('quotes.txt');
 ?>
@@ -20,17 +20,46 @@
 
   <body>
     <h1 style="text-align: center;">Quotes and Authors</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Explore</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="..\signin.php">Sign In</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="..\signup.php">Sign Up</a>
+            </li>
+            <?php
+              if ($_SESSION['logged'] == 'true') {
+            ?>
+            <li class="nav-item">
+              <a class="nav-link" href="..\signout.php">Sign Out</a>
+            </li>
+            <?php } ?>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <?php
         for ($i = 0; $i < count($quotes_array); $i++) {
           if ($quotes_array[$i] == null) {
             break;
           }
+          $author_name = [$authors_array[intval($quotes_array[$i][1])][0], $authors_array[intval($quotes_array[$i][1])][1]];
     ?>
 
     <div class="col-12 col-sm-6 col-lg-3">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title"><?= implode(" ", $authors_array[intval($quotes_array[$i][1])]) ?></h5>
+                <h5 class="card-title"><?= implode(" ", $author_name) ?></h5>
                 <p class="card-text"><?= '"'.$quotes_array[$i][0].'"' ?></p>
                 <a href="detail.php?index=<?= $i ?>" class="card-link" style="text-decoration: none; color: blue;">Details</a>
             </div>

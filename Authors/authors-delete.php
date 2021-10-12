@@ -14,6 +14,25 @@
     <title>Delete</title>
 </head>
 <body>
+    <?php
+        if ($_SESSION['logged'] == 'false') {
+    ?>
+    <body>
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">I'm Sorry</h4>
+            <p>In order to delete an author, you have to be signed into an account.</p>
+            <hr>
+            <p class="mb-0">
+                <a href="..\signup.php"><button type="button" class="btn btn-primary">Sign Up</button></a>
+                <a href="..\signin.php"><button type="button" class="btn btn-primary">Sign In</button></a>
+                <a href="authors-index.php"><button type="button" class="btn btn-primary">Home</button></a>
+            </p>
+        </div>
+    </body>
+    <?php
+        }
+        else {
+    ?>
     <div class="column">
         <div class="container mt-5">
             <div class="text-center">
@@ -47,7 +66,7 @@
                 </form>
             </div> 
             <div class="col">
-                <a href="index.php" class="btn btn-primary">Go Back</a>
+                <a href="authors-index.php" class="btn btn-primary">Go Back</a>
             </div>
         </div>
     </div>
@@ -58,7 +77,8 @@
 </body>
 </html>
 <?php
-    if (isset($_POST['delete'])){
-        deleteRecord('author.txt', $index);
+        if (isset($_POST['delete'])){
+            deleteRecord('author.txt', $index);
+        }
     }
 ?>

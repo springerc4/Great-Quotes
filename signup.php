@@ -3,7 +3,7 @@
 	require_once('auth.php');
 	// if the user is alreay signed in, redirect them to the members_page.php page
 	if ($_SESSION['logged'] == "true") {
-		header('Location: index.php');
+		header('Location: Quotes\index.php');
 	}
 	// use the following guidelines to create the function in auth.php
 	// instead of using "die", return a message that can be printed in the HTML page
@@ -31,12 +31,12 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
-    <title>Hello, world!</title>
+    <title>Sign Up</title>
   </head>
   <body style="margin-left: 5%;">
 	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index.php">Home</a></li>
+			<li class="breadcrumb-item"><a href="Quotes\index.php">Home</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Sign Up</li>
 		</ol>
 	</nav>

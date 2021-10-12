@@ -21,7 +21,7 @@
     <body>
         <div class="alert alert-danger" role="alert">
             <h4 class="alert-heading">I'm Sorry</h4>
-            <p>In order to modify a quote, you have to be signed in to an account.</p>
+            <p>In order to modify a quote, you have to be signed into an account.</p>
             <hr>
             <p class="mb-0">
                 <a href="..\signup.php"><button type="button" class="btn btn-primary">Sign Up</button></a>

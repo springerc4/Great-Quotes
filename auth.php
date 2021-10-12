@@ -34,7 +34,7 @@ function signup($email, $password) {
 
 // add parameters
 function signin($email, $password) {
-	// add the body of the function based on the guidelines of signin.php
+	// 1. Check to see if email and password have inputs
 	if (!isset($_POST['email']) || !isset($_POST['password'])) {
 		echo 'Email or Password is Invalid';
 		return false;
@@ -44,8 +44,8 @@ function signin($email, $password) {
 		echo 'Email or Password is Invalid';
 		return false;
 	}
-	// 3. check if the password is well formatted
-	else if (!preg_match('//' , $password)) {
+	// 3. check if the password is correct length
+	else if (strlen($password)<8 || strlen($password) > 16) {
 		echo 'Email or Password is Invalid';
 		return false;
 	}
@@ -70,18 +70,9 @@ function signin($email, $password) {
 }
 
 function signout() {
-	// add the body of the function based on the guidelines of signout.php
+	// Sign the user out and destroy the current session
 	$_SESSION['logged'] = "false";
 	session_destroy();
+	// Redirect to the index page
 	header('Location: Quotes\index.php');
-}
-
-function is_logged() {
-    // Determine if user is logged in or not
-	if ($_SESSION['logged'] == "false") {
-		return true;
-	}
-	else {
-		return false;
-	}
 }
