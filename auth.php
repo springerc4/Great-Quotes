@@ -21,6 +21,7 @@ function signup($email, $password) {
 	}
 	// encrypt password
 	// save the user in the database 
+	//Redirect to sign in page
 	else {
 		$encrypted_password = password_hash($password, PASSWORD_DEFAULT);
 		$array = array($email, $encrypted_password);
@@ -29,7 +30,6 @@ function signup($email, $password) {
 		fclose($handle);
 		header('Location: signin.php');
 	}
-	//show them a success message and redirect them to the sign in page
 }
 
 // add parameters

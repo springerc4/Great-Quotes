@@ -20,7 +20,7 @@
   <body>
     
     
-
+    <!-- Bootstrap for sign out button -->
     <div class="card">
         <div class="card-header">
             Sign Out
@@ -64,9 +64,7 @@
 
 
 <?php
+// Signs user out if button is submitted
 if (isset($_POST['SignOut'])) {
     signout();
 }
-
-// use the following guidelines to create the function in auth.php
-// redirect the user to the public page.

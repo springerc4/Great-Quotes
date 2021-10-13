@@ -6,8 +6,7 @@
 	if ($_SESSION['logged'] == "true") {
 		header('Location: Quotes\index.php');
 	}
-	// use the following guidelines to create the function in auth.php
-	//instead of using "die", return a message that can be printed in the HTML page
+	// Check if field is empty and sign user in if account exists
 	if(count($_POST)>0) {
 		$email_input = $_POST['email'];
 		$password_input = $_POST['password'];
@@ -17,18 +16,9 @@
 			header('Location: Quotes\index.php');
 		}
 		else $_SESSION['logged'] = "false";
-		
-		/*
-		echo 'check email+password';
-		if(true){
-			$_SESSION['logged']=true;
-			
-		}else $_SESSION['logged']=false;
-		*/
 	}
-
-// improve the form
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -48,6 +38,7 @@
 		</ol>
 	</nav>
 	<h1>Sign In</h1>
+	<!-- Form for signing into account -->
 	<form method="POST">
 		<div class="mb-3 row" style="width: 40%;">
 			<label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>

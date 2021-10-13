@@ -1,11 +1,13 @@
 <?php
    session_start();
    require_once('..\csv_util.php');
+   // Set variables using functions from csv_util.php
    $index = $_SESSION['index'];
    $quote = returnCSVElement('quotes.txt', $index, 0);
    $authorIndex = returnCSVElement('quotes.txt', $index, 1);
    $author = returnCSVElement('..\Authors\authors.txt', $authorIndex, 0)." ".returnCSVElement('..\Authors\authors.txt', $authorIndex, 1);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +18,10 @@
     <title>Delete</title>
 </head>
 <?php
+    // Check if user is logged out
     if ($_SESSION['logged'] == "false") {
 ?>
+    <!-- Notify user to sign in to delete a quote -->
     <body>
         <div class="alert alert-danger" role="alert">
             <h4 class="alert-heading">I'm Sorry</h4>
@@ -35,6 +39,7 @@
     }
     else {
 ?>
+<!-- Allow user to delete quote -->
 <body>
     <div class="column">
         <div class="container mt-5">
@@ -87,6 +92,7 @@
 </body>
 </html>
 <?php
+        // Delete record if button is submitted
         if (isset($_POST['delete'])){
             deleteRecord('quotes.txt', $index);
         }

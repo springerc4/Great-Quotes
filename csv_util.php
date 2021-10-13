@@ -29,9 +29,7 @@
     function addNewRecord($csv_file, $new_record) {
         $handle = fopen($csv_file, 'a');
         fwrite($handle, ''.PHP_EOL);
-        for ($i = 0; $i < count($new_record); $i++) {
-            fwrite($handle, implode(";", $new_record[$i]));
-        }
+        fwrite($handle, implode(";", $new_record[0]));
         fclose($handle);
     }
     //Modify a line from the CSV file
@@ -89,6 +87,7 @@
         fclose($handle);
         return $contains;
     }
+    // Sees if password is in the database
     function passwordMatch($csv_file, $password) {
         $array = convertCSV($csv_file);
         for ($i = 0; $i < count($array); $i++) {

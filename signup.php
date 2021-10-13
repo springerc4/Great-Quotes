@@ -5,8 +5,6 @@
 	if ($_SESSION['logged'] == "true") {
 		header('Location: Quotes\index.php');
 	}
-	// use the following guidelines to create the function in auth.php
-	// instead of using "die", return a message that can be printed in the HTML page
 	// check if the fields are empty
 	if(count($_POST)>0) {
 		if (!isset($_POST['email'])) {
@@ -19,9 +17,8 @@
 			echo signup($_POST['email'], $_POST['password']);
 		}
 	}
-
-	// improve the form
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -41,6 +38,7 @@
 		</ol>
 	</nav>
 	<h1>Sign Up</h1>
+	<!-- Form for making an account -->
 	<form method="POST">
 		<div class="mb-3 row" style="width: 40%;">
 			<label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>

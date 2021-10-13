@@ -70,13 +70,17 @@
   </body>
 </html>
 <?php
+        // Checks if form has been submitted
         if (!empty($_POST)) {
+            // Checks correctly formatted quote
             if (!preg_match('/[a-zA-Z]{1,}/', $_POST['userquote'])) {
                 die('<h2 style="text-align: center; color: red; margin-top: -5%;">Invalid: Please enter a quote</h2>');
             }
+            // Checks that author name is selected
             else if ($_POST['authorname'] == 'default') {
                 die('<h2 style="text-align:center; color: red; margin-top: -5%;">Invalid: Please choose an author</h2>');
             }
+            // Adds quote to quotes.txt
             else {
                 for ($i = 0; $i < count($author_array); $i++) {
                     if (implode(" ", $author_array[$i]) == $_POST['authorname']) {

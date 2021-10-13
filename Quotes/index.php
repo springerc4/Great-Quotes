@@ -2,9 +2,11 @@
     session_start();
     require_once('..\csv_util.php');
     require_once('..\auth.php');
+    // Check if user is logged in
     if (!isset($_SESSION['logged'])) {
       $_SESSION['logged'] = "false";
     }
+    // Create arrays for two csv files
     $authors_array = convertCSV('..\Authors\authors.txt');
     $quotes_array = convertCSV('quotes.txt');
 ?>
@@ -17,9 +19,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>Index Page</title>
   </head>
-
+  <!-- Display all quotes and authors -->
   <body>
     <h1 style="text-align: center;">Quotes and Authors</h1>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Explore</a>
@@ -38,6 +41,7 @@
               <a class="nav-link" href="..\signup.php">Sign Up</a>
             </li>
             <?php
+              // Check if user is logged in
               if ($_SESSION['logged'] == 'true') {
             ?>
             <li class="nav-item">
@@ -49,13 +53,14 @@
       </div>
     </nav>
     <?php
+        // Don't display blank lines in csv file
         for ($i = 0; $i < count($quotes_array); $i++) {
           if ($quotes_array[$i] == null) {
             break;
           }
           $author_name = [$authors_array[intval($quotes_array[$i][1])][0], $authors_array[intval($quotes_array[$i][1])][1]];
     ?>
-
+    <!-- Display each card by looping through quotes and authors -->
     <div class="col-12 col-sm-6 col-lg-3">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
