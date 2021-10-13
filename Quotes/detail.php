@@ -1,6 +1,7 @@
 <?php
   session_start();
   require_once('..\csv_util.php');
+  // Set varaibles using functions from csv_util.php
   $_SESSION['index'] = $_GET['index'];
   $enlarged_quote = returnCSVElement('quotes.txt', $_GET['index'], 0);
   $author_list = convertCSV('..\Authors\authors.txt');
@@ -17,7 +18,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>Enlarged Quote</title>
   </head>
-
+<!-- Display quote and editing options -->
   <body>
     <div class="card">
         <div class="card-header">

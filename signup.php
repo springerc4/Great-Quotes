@@ -3,10 +3,8 @@
 	require_once('auth.php');
 	// if the user is alreay signed in, redirect them to the members_page.php page
 	if ($_SESSION['logged'] == "true") {
-		header('Location: index.php');
+		header('Location: Quotes\index.php');
 	}
-	// use the following guidelines to create the function in auth.php
-	// instead of using "die", return a message that can be printed in the HTML page
 	// check if the fields are empty
 	if(count($_POST)>0) {
 		if (!isset($_POST['email'])) {
@@ -19,9 +17,8 @@
 			echo signup($_POST['email'], $_POST['password']);
 		}
 	}
-
-	// improve the form
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,16 +28,17 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
-    <title>Hello, world!</title>
+    <title>Sign Up</title>
   </head>
   <body style="margin-left: 5%;">
 	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="index.php">Home</a></li>
+			<li class="breadcrumb-item"><a href="Quotes\index.php">Home</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Sign Up</li>
 		</ol>
 	</nav>
 	<h1>Sign Up</h1>
+	<!-- Form for making an account -->
 	<form method="POST">
 		<div class="mb-3 row" style="width: 40%;">
 			<label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>

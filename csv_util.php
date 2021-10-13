@@ -8,6 +8,18 @@
         fclose($handle);
         return $records;
     }
+    //Converts PHP array to CSV file
+    function convertPHP($array, $csv_file) {
+        $handle = fopen($csv_file, 'w');
+        for ($i = 0; $i < count($array); $i++) {
+            $line = $array[$i];
+            if ($line == null) {
+                break;
+            }
+            fputcsv($handle, $line, ';');
+        }
+        fclose($handle);
+    }
     //Returns a specified element from the CSV file in the form of a PHP array element
     function returnCSVElement($csv_file, $element, $index) {
         $new_array = convertCSV($csv_file);
@@ -74,5 +86,15 @@
         }
         fclose($handle);
         return $contains;
+    }
+    // Sees if password is in the database
+    function passwordMatch($csv_file, $password) {
+        $array = convertCSV($csv_file);
+        for ($i = 0; $i < count($array); $i++) {
+            if (password_verify($password, $array[$i][1])) {
+                return true;
+            }
+        }
+        return false;
     }
 ?>

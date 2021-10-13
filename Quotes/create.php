@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once('..\csv_util.php');
 ?>
 <!doctype html>
@@ -9,7 +10,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>Create a Quote</title>
   </head>
-
+<?php
+    if ($_SESSION['logged'] == "false") {
+?>
+    <body>
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">I'm Sorry</h4>
+            <p>In order to create a quote, you have to be signed into an account.</p>
+            <hr>
+            <p class="mb-0">
+                <a href="..\signup.php"><button type="button" class="btn btn-primary">Sign Up</button></a>
+                <a href="..\signin.php"><button type="button" class="btn btn-primary">Sign In</button></a>
+                <a href="index.php"><button type="button" class="btn btn-primary">Home</button></a>
+            </p>
+        </div>
+    </body>
+<?php
+    }
+    else {
+?>
   <body>
     <h1 style="text-align: center;">Create a Quote</h1>
     <form method="POST" action="create.php" id='createauthor' name='createauthor'>
@@ -27,6 +46,7 @@
                             $author_array = convertCSV('..\Authors\authors.txt');
                             for ($i = 0; $i < count($author_array); $i++) {
                                 $author_name = $author_array[$i][0].' '.$author_array[$i][1];
+                                echo $author_name;
                         ?>
                         <option name="<?= $author_name ?>" value="<?= $author_name ?>"><?= $author_name ?></option>
                         <?php

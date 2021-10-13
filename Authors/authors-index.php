@@ -3,6 +3,9 @@
     $authors_array = convertCSV('authors.txt');
     echo '<h1>List of Authors</h1>'.'<br>';
     for ($i = 0; $i < count($authors_array); $i++) {
+        if ($authors_array[$i] == null) {
+          break;
+        }
         echo $authors_array[$i][0].' '.$authors_array[$i][1].'<br>';
         echo '<a href="authors-detail.php?index='.$i.'">See Quotes</a>'.'<br>';
     }
