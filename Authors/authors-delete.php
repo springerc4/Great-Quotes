@@ -1,7 +1,7 @@
 <?php
    session_start();
    require_once('..\csv_util.php');
-   $index = $_GET['index'];
+   $index = $_SESSION['index'];
    $author = returnCSVElement('authors.txt', $index, 0)." ".returnCSVElement('authors.txt', $index, 1);
 ?>
 <!DOCTYPE html>
@@ -41,13 +41,13 @@
         </div>
         <div class="row">
             <div class="col" style="margin-left: 30%;">   
-                <form action="delete.php" method="POST" name="delete" id="delete">
+                <form action="authors-delete.php" method="POST" name="delete" id="delete">
                     <input type="hidden" value="delete" name="delete" id="delete">
                     <input class="btn btn-primary" form="delete" type="submit" value="delete">
                 </form>
             </div> 
             <div class="col">
-                <a href="index.php" class="btn btn-primary">Go Back</a>
+                <a href="authors-index.php" class="btn btn-primary">Go Back</a>
             </div>
         </div>
     </div>
@@ -59,6 +59,13 @@
 </html>
 <?php
     if (isset($_POST['delete'])){
-        deleteRecord('author.txt', $index);
+        deleteRecord('authors.txt', $index);
+        $quotesArray = convertCSV('..\Quotes\quotes.txt');
+        for ($i=0; $i<count($quotesArray); $i++){
+            if ($quotesArray[$i][1] == $index){
+                print_r($quotesArray[$i]);
+                deleteRecord('..\Quotes\quotes.txt', $i);
+            }
+        }
     }
 ?>

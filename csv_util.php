@@ -17,9 +17,7 @@
     function addNewRecord($csv_file, $new_record) {
         $handle = fopen($csv_file, 'a');
         fwrite($handle, ''.PHP_EOL);
-        for ($i = 0; $i < count($new_record); $i++) {
-            fwrite($handle, implode(";", $new_record[$i]));
-        }
+        fwrite($handle, implode(";", $new_record));
         fclose($handle);
     }
     //Modify a line from the CSV file
@@ -61,7 +59,7 @@
         fclose($handle);
     }
     // Check if user email is banned or active
-    function contains($csv_file, $user_input) {
+    function contains($csv_file, $user_input, $index) {
         $contains = false;
         $handle = fopen($csv_file, "r");
         while (!feof($handle)) {
@@ -69,7 +67,7 @@
             if ($record == '') {
                 continue;
             }
-            if ($record[0] == $user_input) {
+            if ($record[$index] == $user_input) {
                 $contains = true;
                 break;
             }

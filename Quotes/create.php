@@ -1,5 +1,5 @@
 <?php
-    require_once('csv_util.php');
+    require_once('..\csv_util.php');
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,7 +24,7 @@
                     <select name="authorname" id="author" form="createauthor" style="height: 60%;">
                         <option value="default">Choose an author</option>
                         <?php
-                            $author_array = convertCSV('authors.txt');
+                            $author_array = convertCSV('..\Authors\authors.txt');
                             for ($i = 0; $i < count($author_array); $i++) {
                                 $author_name = $author_array[$i][0].' '.$author_array[$i][1];
                         ?>
@@ -60,10 +60,10 @@
             for ($i = 0; $i < count($author_array); $i++) {
                 if (implode(" ", $author_array[$i]) == $_POST['authorname']) {
                     $new_record[] = array($_POST['userquote'], strval($i));
-                    addNewRecord('quotes.txt', $new_record);
+                    addNewRecord('quotes.txt', $new_record[0]);
                     echo '<h1 style="text-align: center; margin-top: -5%; color: green;">A New Quote has been Added!</h1>';
                 }
-            }
+            }print_r($new_record);
         }
     }
 ?>
