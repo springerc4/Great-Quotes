@@ -2,6 +2,7 @@
     require_once('..\csv_util.php');
     $authors_array = convertCSV('authors.txt');
     echo '<h1>List of Authors</h1>'.'<br>';
+    // Loop through authors in author array
     for ($i = 0; $i < count($authors_array); $i++) {
         if ($authors_array[$i] == null) {
           break;

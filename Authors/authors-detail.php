@@ -5,6 +5,7 @@
     $quote_array = convertCSV('..\Quotes\quotes.txt');
     $index = $_GET['index'];
     $_SESSION['index'] = $index;
+    // Moves photo upload to new folder
     if (isset($_POST['submit'])) {
         $target_dir = "..\photos/";
         $target_file = $target_dir.basename($_FILES["photoFile"]["name"]);

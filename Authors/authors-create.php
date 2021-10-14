@@ -7,20 +7,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <title>add an Author</title>
+    <title>Add an Author</title>
   </head>
 
   <body>
-    <h1 style="text-align: center;">Add an author</h1>
+    <h1 style="text-align: center;">Add an Author</h1>
     <form method="POST" action="authors-create.php" id='createauthor' name='createauthor'>
         <div class="container" style="background: lightcyan; padding: 5%; margin: 5%; border-radius: 10%;">
             <div class="row" style="margin-top: 10%; padding-bottom: 10%;">
                 <div class="col" style="margin-left: 20%; padding-left: 10%;">
-                    <h4>first name: </h4>
+                    <h4>First Name: </h4>
                     <textarea name="fn"></textarea>
                 </div>
                 <div class="col" style="margin-left: 20%; padding-left: 10%;">
-                    <h4>last name: </h4>
+                    <h4>Last Name: </h4>
                     <textarea name="ln"></textarea>
                 </div>
             </div>
@@ -49,8 +49,6 @@
             $newRecord = array($_POST['fn'],$_POST['ln']);
             addNewRecord('authors.txt', $newRecord);
             echo '<h1 style="text-align: center; margin-top: -5%; color: green;">A New author has been Added!</h1>';
-                
             }
-        
     }
 ?>

@@ -44,6 +44,7 @@
                         <option value="default">Choose an author</option>
                         <?php
                             $author_array = convertCSV('..\Authors\authors.txt');
+                            print_r($author_array);
                             for ($i = 0; $i < count($author_array); $i++) {
                                 $author_name = $author_array[$i][0].' '.$author_array[$i][1];
                                 echo $author_name;
@@ -69,21 +70,26 @@
   </body>
 </html>
 <?php
-    if (!empty($_POST)) {
-        if (!preg_match('/[a-zA-Z]{1,}/', $_POST['userquote'])) {
-            die('<h2 style="text-align: center; color: red; margin-top: -5%;">Invalid: Please enter a quote</h2>');
-        }
-        else if ($_POST['authorname'] == 'default') {
-            die('<h2 style="text-align:center; color: red; margin-top: -5%;">Invalid: Please choose an author</h2>');
-        }
-        else {
-            for ($i = 0; $i < count($author_array); $i++) {
-                if (implode(" ", $author_array[$i]) == $_POST['authorname']) {
-                    $new_record[] = array($_POST['userquote'], strval($i));
-                    addNewRecord('quotes.txt', $new_record[0]);
-                    echo '<h1 style="text-align: center; margin-top: -5%; color: green;">A New Quote has been Added!</h1>';
+        // Checks if form has been submitted
+        if (!empty($_POST)) {
+            // Checks correctly formatted quote
+            if (!preg_match('/[a-zA-Z]{1,}/', $_POST['userquote'])) {
+                die('<h2 style="text-align: center; color: red; margin-top: -5%;">Invalid: Please enter a quote</h2>');
+            }
+            // Checks that author name is selected
+            else if ($_POST['authorname'] == 'default') {
+                die('<h2 style="text-align:center; color: red; margin-top: -5%;">Invalid: Please choose an author</h2>');
+            }
+            // Adds quote to quotes.txt
+            else {
+                for ($i = 0; $i < count($author_array); $i++) {
+                    if ($author_array[$i][0]." ".$author_array[$i][1] == $_POST['authorname']) {
+                        $new_record[] = array($_POST['userquote'], strval($i));
+                        addNewRecord('quotes.txt', $new_record[0]);
+                        echo '<h1 style="text-align: center; margin-top: -5%; color: green;">A New Quote has been Added!</h1>';
+                    }
                 }
-            }print_r($new_record);
+            }
         }
     }
 }
