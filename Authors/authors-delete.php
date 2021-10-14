@@ -77,14 +77,14 @@
 </body>
 </html>
 <?php
-    if (isset($_POST['delete'])){
-        deleteRecord('authors.txt', $index);
-        $quotesArray = convertCSV('..\Quotes\quotes.txt');
-        for ($i=0; $i<count($quotesArray); $i++){
-            if ($quotesArray[$i][1] == $index){
-                print_r($quotesArray[$i]);
-                deleteRecord('..\Quotes\quotes.txt', $i);
+        if (isset($_POST['delete'])){
+            $quotesArray = convertCSV('..\Quotes\quotes.txt');
+            for ($i=0; $i < count($quotesArray); $i++) {
+                if ($quotesArray[$i][1] == $index){
+                    deleteRecord('..\Quotes\quotes.txt', $i);
+                }
             }
+            deleteRecord('authors.txt', $index);
         }
     }
 ?>

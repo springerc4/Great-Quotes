@@ -4,3 +4,4 @@
 "That which does not kill us makes us stronger";4
 "Good day to you!";0
 "I am a man";1
+"Hello there";3
