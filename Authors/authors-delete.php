@@ -77,6 +77,7 @@
 </body>
 </html>
 <?php
+}
         if (isset($_POST['delete'])){
             $quotesArray = convertCSV('..\Quotes\quotes.txt');
             for ($i=0; $i < count($quotesArray); $i++) {
@@ -86,6 +87,6 @@
             }
             deleteRecord('authors.txt', $index);
         }
-    }
-}
+
+
 ?>
