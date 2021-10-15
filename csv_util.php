@@ -38,6 +38,9 @@
             $array[$line][$index] = $new_quote;
             $handle = fopen($file, 'w');
             foreach ($array as $records) {
+                if ($records == null) {
+                    break;
+                }
                 fputcsv($handle, $records, ';');
             }
             $size = fstat($handle)['size'];
@@ -49,7 +52,6 @@
             $arr = convertCSV($file);
             $arr[$line][0] = "";
             $arr[$line][1] = "";
-            print_r($arr[$line]);
             $handle = fopen($file, 'w');
             foreach ($arr as $i){
                 fputcsv($handle, $i, ';');

@@ -1,5 +1,5 @@
 <?php
-require_once('csv_util.php');
+require_once('..\csv_util.php');
 // add parameters
 function signup($email, $password) {
 	// check if the email is valid
@@ -74,5 +74,5 @@ function signout() {
 	$_SESSION['logged'] = "false";
 	session_destroy();
 	// Redirect to the index page
-	header('Location: Quotes\index.php');
+	header('Location: ..\Quotes\index.php');
 }

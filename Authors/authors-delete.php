@@ -23,8 +23,8 @@
             <p>In order to delete an author, you have to be signed into an account.</p>
             <hr>
             <p class="mb-0">
-                <a href="..\signup.php"><button type="button" class="btn btn-primary">Sign Up</button></a>
-                <a href="..\signin.php"><button type="button" class="btn btn-primary">Sign In</button></a>
+                <a href="..\Authentication\signup.php"><button type="button" class="btn btn-primary">Sign Up</button></a>
+                <a href="..\Authentication\signin.php"><button type="button" class="btn btn-primary">Sign In</button></a>
                 <a href="authors-index.php"><button type="button" class="btn btn-primary">Home</button></a>
             </p>
         </div>
@@ -77,7 +77,7 @@
 </body>
 </html>
 <?php
-}
+
         if (isset($_POST['delete'])){
             $quotesArray = convertCSV('..\Quotes\quotes.txt');
             for ($i=0; $i < count($quotesArray); $i++) {
@@ -87,6 +87,5 @@
             }
             deleteRecord('authors.txt', $index);
         }
-
-
+    }
 ?>

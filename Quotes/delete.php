@@ -28,8 +28,8 @@
             <p>In order to delete a quote, you have to be signed into an account.</p>
             <hr>
             <p class="mb-0">
-                <a href="..\signup.php"><button type="button" class="btn btn-primary">Sign Up</button></a>
-                <a href="..\signin.php"><button type="button" class="btn btn-primary">Sign In</button></a>
+                <a href="..\Authentication\signup.php"><button type="button" class="btn btn-primary">Sign Up</button></a>
+                <a href="..\Authentication\signin.php"><button type="button" class="btn btn-primary">Sign In</button></a>
                 <a href="index.php"><button type="button" class="btn btn-primary">Home</button></a>
             </p>
         </div>
@@ -65,8 +65,9 @@
                     <h4>
                         <?php if (!isset($_POST['delete'])){
                            echo "Are you sure you want to delete?";
-                        }else{
+                        }else {
                             echo "Deleted!";
+                            header('Location: index.php');
                         }
                         ?>
                     </h4>

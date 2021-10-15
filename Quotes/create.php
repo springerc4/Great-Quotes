@@ -19,8 +19,8 @@
             <p>In order to create a quote, you have to be signed into an account.</p>
             <hr>
             <p class="mb-0">
-                <a href="..\signup.php"><button type="button" class="btn btn-primary">Sign Up</button></a>
-                <a href="..\signin.php"><button type="button" class="btn btn-primary">Sign In</button></a>
+                <a href="..\Authentication\signup.php"><button type="button" class="btn btn-primary">Sign Up</button></a>
+                <a href="..\Authentication\signin.php"><button type="button" class="btn btn-primary">Sign In</button></a>
                 <a href="index.php"><button type="button" class="btn btn-primary">Home</button></a>
             </p>
         </div>
@@ -46,6 +46,9 @@
                             $author_array = convertCSV('..\Authors\authors.txt');
                             print_r($author_array);
                             for ($i = 0; $i < count($author_array); $i++) {
+                                if ($author_array[$i] == null) {
+                                    continue;
+                                }
                                 $author_name = $author_array[$i][0].' '.$author_array[$i][1];
                                 echo $author_name;
                         ?>
@@ -83,6 +86,9 @@
             // Adds quote to quotes.txt
             else {
                 for ($i = 0; $i < count($author_array); $i++) {
+                    if ($author_array[$i] == null) {
+                        continue;
+                    }
                     if ($author_array[$i][0]." ".$author_array[$i][1] == $_POST['authorname']) {
                         $new_record[] = array($_POST['userquote'], strval($i));
                         addNewRecord('quotes.txt', $new_record[0]);

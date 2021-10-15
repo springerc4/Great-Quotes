@@ -3,7 +3,7 @@
     require_once('auth.php');
     // if the user is not logged in, redirect them to the public page
     if ($_SESSION['logged'] == "false") {
-        header('Location: Quotes\index.php');
+        header('Location: ..\Quotes\index.php');
     }
 ?>
 <!doctype html>

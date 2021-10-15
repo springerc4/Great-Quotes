@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once('..\csv_util.php');
-    require_once('..\auth.php');
+    require_once('..\Authentication\auth.php');
     // Check if user is logged in
     if (!isset($_SESSION['logged'])) {
       $_SESSION['logged'] = "false";
@@ -35,17 +35,17 @@
               <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="..\signin.php">Sign In</a>
+              <a class="nav-link" href="..\Authentication\signin.php">Sign In</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="..\signup.php">Sign Up</a>
+              <a class="nav-link" href="..\Authentication\signup.php">Sign Up</a>
             </li>
             <?php
               // Check if user is logged in
               if ($_SESSION['logged'] == 'true') {
             ?>
             <li class="nav-item">
-              <a class="nav-link" href="..\signout.php">Sign Out</a>
+              <a class="nav-link" href="..\Authentication\signout.php">Sign Out</a>
             </li>
             <?php } ?>
           </ul>
