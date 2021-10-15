@@ -74,5 +74,5 @@ function signout() {
 	$_SESSION['logged'] = "false";
 	session_destroy();
 	// Redirect to the index page
-	header('Location: Quotes\index.php');
+	header('Location: ..\Quotes\index.php');
 }

@@ -87,5 +87,4 @@
             deleteRecord('authors.txt', $index);
         }
     }
-}
 ?>
