@@ -2,6 +2,7 @@
    session_start();
    require_once('..\csv_util.php');
    $index = $_SESSION['index'];
+   echo $index;
    $author = returnCSVElement('authors.txt', $index, 0)." ".returnCSVElement('authors.txt', $index, 1);
 ?>
 <!DOCTYPE html>
@@ -79,12 +80,7 @@
 <?php
 
         if (isset($_POST['delete'])){
-            $quotesArray = convertCSV('..\Quotes\quotes.txt');
-            for ($i=0; $i < count($quotesArray); $i++) {
-                if ($quotesArray[$i][1] == $index){
-                    deleteRecord('..\Quotes\quotes.txt', $i);
-                }
-            }
+            deleteMultiple('../Quotes/quotes.txt', $index);
             deleteRecord('authors.txt', $index);
         }
     }

@@ -18,6 +18,8 @@
                 }
                 fputcsv($handle, $line, ';');
             }
+            $size = fstat($handle)['size'];
+            ftruncate($handle, ($size-1));
             fclose($handle);
         }
         //Returns a specified element from the CSV file in the form of a PHP array element
@@ -63,7 +65,8 @@
         // Deletes a line from the CSV file
         function deleteRecord($file, $line) {
             $arr = convertCSV($file);
-            array_splice($arr, $line);
+            unset($arr[$line]);
+            $arr = array_values($arr);
             $handle = fopen($file, 'w');
             foreach ($arr as $i) {
                 if ($i == null) {
@@ -74,6 +77,16 @@
             $size = fstat($handle)['size'];
             ftruncate($handle, ($size-1));
             fclose($handle);
+        }
+        function deleteMultiple($file, $index) {
+            $arr = convertCSV($file);
+            for ($i=0; $i < count($arr); $i++) {
+                if ($arr[$i][1] == $index){
+                    unset($arr[$i]);
+                }
+            }
+            $arr = array_values($arr);
+            convertPHP($arr, $file);
         }
         // Check if user email is active
         function contains($csv_file, $user_input) {
